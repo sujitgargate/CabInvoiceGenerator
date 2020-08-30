@@ -6,6 +6,7 @@ public class CabFareInvoice {
    public final int MIN_FINAL_FARE = 5;
 
 
+   //Formula For Calculation Of Total Fare
    public double calculateTotalFare(double distance, double minutesSpent) {
       double totalFare = distance * COST_PER_KM + minutesSpent * FARE_PER_MIN;
       return totalFare;
