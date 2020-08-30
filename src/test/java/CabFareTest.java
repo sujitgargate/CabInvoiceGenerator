@@ -5,10 +5,14 @@ import org.junit.Test;
 public class CabFareTest {
 
    CabFareInvoice cabFareInvoice;
+   Journey[] muiltipleRides = null;
 
    @Before
    public void setUp() throws Exception {
       cabFareInvoice = new CabFareInvoice();
+      muiltipleRides = new Journey[]{new Journey(2, 5),
+              new Journey(0.1, 1)
+      };
    }
 
    //Tests Generated Fare And Expected Fare
@@ -35,21 +39,31 @@ public class CabFareTest {
    //Tests For Muiltiple Rides
    @Test
    public void givenDistanceAndTimeForMuiltipleJourney_ShouldReturnTotalFare() {
-      Journey[] muiltipleRides = {new Journey(2.0, 5),
-              new Journey(5.0, 10)
-      };
       double totalFareForMuiltipleJourney = cabFareInvoice.getTotalFareForMuiltipleJourney(muiltipleRides);
-      Assert.assertEquals(60, totalFareForMuiltipleJourney, 0.0);
+      Assert.assertEquals(5, totalFareForMuiltipleJourney, 0.0);
    }
 
    //Negative Test For Muiltiple Rides
    @Test
    public void givenDistanceAndTimeForMuiltipleJourney_ShouldPassTestForNegativeTest() {
-      Journey[] muiltipleRides = {new Journey(2.0, 5),
-              new Journey(5.0, 10)
-      };
       double totalFareForMuiltipleJourney = cabFareInvoice.getTotalFareForMuiltipleJourney(muiltipleRides);
       Assert.assertNotEquals(160, totalFareForMuiltipleJourney, 0.0);
+   }
+
+   //Tests For Muiltiple Rides with Invoice Summary
+   @Test
+   public void givenDistanceAndTimeForMuiltipleJourney_ShouldReturnInvoiceSummary() {
+      InvoiceSummary invoiceSummary = cabFareInvoice.getTotalFareForMuiltipleJourneySummary(muiltipleRides);
+      InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30);
+      Assert.assertEquals(expectedInvoiceSummary, invoiceSummary);
+   }
+
+   //Tests For Muiltiple Rides with Invoice Summary
+   @Test
+   public void givenDistanceAndTimeForMuiltipleJourney_ForInvoiceSummary_ShouldPassNegativeTest() {
+      InvoiceSummary invoiceSummary = cabFareInvoice.getTotalFareForMuiltipleJourneySummary(muiltipleRides);
+      InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 101);
+      Assert.assertNotEquals(expectedInvoiceSummary, invoiceSummary);
    }
 }
 
