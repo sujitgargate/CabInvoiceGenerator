@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CabFareTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-30T08:16:23" hostname="SUJITGARGATE" time="0.001">
+<testsuite name="CabFareTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-08-30T08:23:44" hostname="SUJITGARGATE" time="0.003">
   <properties/>
-  <testcase name="givenDistanceAndTimeForJourney_ShouldReturnFalseForNegativeTest" classname="CabFareTest" time="0.001"/>
+  <testcase name="givenDistanceAndTimeForJourney_ShouldReturnFalseForNegativeTest" classname="CabFareTest" time="0.002"/>
+  <testcase name="givenDistanceAndTimeForJourney_ShouldReturnTotalFare" classname="CabFareTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
