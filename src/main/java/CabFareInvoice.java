@@ -1,28 +1,27 @@
 
 public class CabFareInvoice {
 
-   //CabFareInvoice cabFareInvoice = new CabFareInvoice();
+   int COST_PER_KM = 10;
+   int FARE_PER_MIN = 1;
+   public final int MIN_FINAL_FARE = 5;
 
-   public double calculateTotalFare(double distance, double COST_PER_KM, double minutesSpent, double FARE_PER_MINUTE) {
-      double totalFare = distance * COST_PER_KM + minutesSpent * FARE_PER_MINUTE;
+
+   public double calculateTotalFare(double distance, double minutesSpent) {
+      double totalFare = distance * COST_PER_KM + minutesSpent * FARE_PER_MIN;
       return totalFare;
    }
 
    //Generates Fare For Cab Journey
-   public double getTotalFareForJourney(double distance, double COST_PER_KM, double minutesSpent, double FARE_PER_MINUTE) {
-      double totalFare = this.calculateTotalFare(distance, COST_PER_KM, minutesSpent, FARE_PER_MINUTE);
-
-      if(totalFare < 5) {
-         return 5;
-      }
-      return totalFare;
+   public double getTotalFareForJourney(double distance, double minutesSpent) {
+      double totalFare = this.calculateTotalFare(distance, minutesSpent);
+      return Math.max(totalFare, MIN_FINAL_FARE);
    }
 
    //Genrates Total Fare For Muiltiple Journey
    public double getTotalFareForMuiltipleJourney(Journey[] journey) {
       double totalFareForMuiltipleJourney = 0;
       for(Journey journeyloop:journey) {
-         totalFareForMuiltipleJourney = this.getTotalFareForJourney(journeyloop.distanceTravelled, journeyloop.COST_PER_KM, journeyloop.WaitingTime, journeyloop.FARE_PER_MIN);
+         totalFareForMuiltipleJourney = this.getTotalFareForJourney(journeyloop.distanceTravelled, journeyloop.COST_PER_KM);
       }
       return totalFareForMuiltipleJourney;
    }
