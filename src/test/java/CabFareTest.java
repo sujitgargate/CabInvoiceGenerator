@@ -15,14 +15,20 @@ public class CabFareTest {
    @Test
    public void givenDistanceAndTimeForJourney_ShouldReturnTotalFare() {
       double totalFareForJourney = cabFareInvoice.getTotalFareForJourney(2.0, 10, 5, 1);
-      Assert.assertEquals(25, totalFareForJourney, 0.0);
+      Assert.assertEquals(25, totalFareForJourney, 0.1);
    }
 
    //Negative Tests For Generated Fare And Expected Fare
    @Test
    public void givenDistanceAndTimeForJourney_ShouldReturnFalseForNegativeTest() {
       double totalFareForJourney = cabFareInvoice.getTotalFareForJourney(2.0, 10, 5, 1);
-      Assert.assertNotEquals(totalFareForJourney, 75);
+      Assert.assertNotEquals(85, totalFareForJourney);
+   }
+
+   @Test
+   public void givenDistanceAndTimeForJourney_ShouldReturnMinimumFare() {
+      double totalFareForJourney = cabFareInvoice.getTotalFareForJourney(0.2, 10, 0, 1);
+      Assert.assertEquals(5, totalFareForJourney, 0.1);
    }
 }
 
