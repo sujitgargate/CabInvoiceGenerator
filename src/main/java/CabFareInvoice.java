@@ -17,6 +17,13 @@ public class CabFareInvoice {
       return Math.max(totalFare, MIN_FARE);
    }
 
+
+   /**
+    * @code Results Total Fare For Muiltiple Journey
+    * @param journey The array which contains distance travelled and Waiting Time
+    * @return  The return value
+    */
+
    //Genrates Total Fare For Muiltiple Journey
    public double getTotalFareForMuiltipleJourney(Journey[] journey) {
       double totalFareForMuiltipleJourney = 0;

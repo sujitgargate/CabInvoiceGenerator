@@ -10,6 +10,12 @@ public class InvoiceSummary {
       this.averageFare = totalFare / noOfJournies;
    }
 
+   /**
+    *
+    * @param obj contains journies, totalFare
+    * @return object contains compared journies, totalFare, averageFare
+    */
+
    //Overrides Current Equals() to compare muiltiple params
    @Override
    public boolean equals(Object obj) {
